@@ -81,7 +81,7 @@ def fetchPhotos(url):
     #print(url)
     url=urllib.request.urlopen(url)
     #print(url)
-    soup=BeautifulSoup(url)
+    soup=BeautifulSoup(url,"html.parser")
     url =soup.find_all('img',{"src" : re.compile('http://media1.santabanta.com/full1.*')})
     #print(url)
     for i in url:
