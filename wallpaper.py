@@ -11,6 +11,7 @@ import shutil
 import random
 import sys
 
+
 def downloadImage():
     wcount =0
     try:       
@@ -32,7 +33,6 @@ def downloadImage():
         print(err)
 
 
-
 def ChangeWallpaper():
     #wcount = 0
     while True:
@@ -47,23 +47,20 @@ def ChangeWallpaper():
             #wcount = wcount + 1
             time.sleep(900)
         except FileNotFoundError as err:
-            print(err)
-        
+            print(err)        
     
 
 def wallpapercount(wcount):
     #wcount = wcount + 1
     return ("C:/Users/dev/Desktop/wallpapers/" + str(wcount) +".jpg")
+
     
 def WallpaperAddress():
     user_url = input("Enter URl : ")
     if(user_url == ""):
         url="http://www.santabanta.com/wallpapers/categories/0/?order=popular"
     else:
-        url=user_url
-    
-        
-        
+        url=user_url        
     #url=urllib.request.urlopen("http://www.santabanta.com/wallpapers/indian-celebrities(f)/2/")
     url=urllib.request.urlopen(url)
     soup=BeautifulSoup(url,"html.parser")
@@ -75,7 +72,8 @@ def WallpaperAddress():
                 #print(type(link))
                 lst.append(link['href'])
     print("***************Returning URLs List****************")
-    return lst            
+    return lst
+
 
 def fetchPhotos(url):
     #print(url)
@@ -88,6 +86,7 @@ def fetchPhotos(url):
         print("**************Sending Individual Photo URL**************")
         return (i.get('src'))
     #print(type(url))
+	
         
 def deleteExisting():
     try:
@@ -109,17 +108,8 @@ def createFolder():
             if e.errorno != errorno.EEXIST:
                 raise
                     
-    
-            
-        
-        
-        
+
 deleteExisting()
 createFolder()      
 downloadImage()
-ChangeWallpaper()    
-        
-                         
-                         
-    
-    
+ChangeWallpaper()
